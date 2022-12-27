@@ -6,7 +6,7 @@ ENV container docker
 ADD https://github.com/borgbackup/borg/releases/download/${BORG_VERSION}/borg-linux64 /usr/local/bin
 ADD https://github.com/borgbackup/borg/releases/download/${BORG_VERSION}/borg-linux64.asc /usr/local/bin
 RUN \
-  dnf -y update && dnf -y install --nodocs libxcrypt-compat && dnf clean all && \
+  dnf -y update && dnf -y install --nodocs libxcrypt-compat mysql postgresql && dnf clean all && \
   cd /usr/local/bin && \
   gpg --recv-keys "6D5B EF9A DD20 7580 5747 B70F 9F88 FB52 FAF7 B393" && \
   gpg --verify borg-linux64.asc && \
